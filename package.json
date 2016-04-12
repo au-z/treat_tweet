@@ -1,0 +1,25 @@
+{
+  "name": "treat_tweet",
+  "version": "1.0.0",
+  "description": "Tweet at me with love and make the world taste good!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auzmartist/treat_tweet"
+  },
+  "keywords": [
+    "twitter",
+    "raspberry",
+    "pi",
+    "candy"
+  ],
+  "author": "Austin Martin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auzmartist/treat_tweet/issues"
+  },
+  "homepage": "https://github.com/auzmartist/treat_tweet"
+}
