@@ -1,20 +1,16 @@
-var Twitter = require('twitter-node-client').Twitter;
+var appConfig = require('./app.config');
+var http = require('http');
 
-var error = function(err, response, body){
-	console.log('ERROR [%s]', data);
-};
-var success = function(data){
-	console.log('Data [%s]', data);
-};
+var express = require('express');
+var app = express();
 
-var config = {
-	'consumerKey': '',
-	'consumerSecret': '',
-	'accessToken': '',
-	'accessTokenSecret': '',
-	'callbackUrl': ''
-}
+require('./routes')(app);
 
-var Twitter = new Twitter(config);
+// Routing
+app.get('/', function(req, res){
+	res.send('Hello!\n');
+});
 
-//
+app.listen(8080);
+console.log('Server running at http://localhost:8080/');
+
