@@ -1,6 +1,3 @@
-var appConfig = require('../app.config');
-var Twit = require('twit');
-
 module.exports = function tweetFactory(twitter){
 	return({
 		index: index,
@@ -9,7 +6,7 @@ module.exports = function tweetFactory(twitter){
 		stream: stream
 	});
 
-	//PUBLIC 
+	//PUBLIC
 	function index(req, res){
 		res.send([{
 			'status':'not implemented'
@@ -23,9 +20,16 @@ module.exports = function tweetFactory(twitter){
 	}
 
 	function tweet(req, res){
-		twitter.post('statuses/update', {status: req.params.msg }, function(err, data, res){
-			console.log(data);
-		});
+		if(req.body.msg){
+			// twitter.post('statuses/update', {status: req.body.msg }, function(err, data, response){
+			// 	res.send(data);
+			// });
+			res.send([{
+				'status':'not implemented'
+			}]);
+		}else{
+			res.status(400).send('Tweet must contain a message.');
+		}
 	}
 
 	function stream(req, res){
