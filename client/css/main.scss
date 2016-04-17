@@ -1,0 +1,22 @@
+$cl: #F3F4F5;
+$cml: #c7c0bc;
+$cm: #908575;
+$cd: #453e31;
+$ca: #ca774e;
+
+body{
+	background-color: $cl;
+}
+
+#app{
+	ul{
+		li{
+			// border-style: inset;
+			border: 1px solid: #333;
+			padding: 8px;
+			color: white;
+			background-color: #333;
+			list-style: none;
+		}
+	}
+}

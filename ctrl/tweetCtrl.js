@@ -3,7 +3,7 @@ module.exports = function tweetFactory(twitter){
 		index: index,
 		profile: profile,
 		tweet: tweet,
-		stream: stream
+		stream: stream,
 	});
 
 	//PUBLIC

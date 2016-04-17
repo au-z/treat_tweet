@@ -1,0 +1,72 @@
+<html>
+<head>
+</head>
+	<title>Tweet 4 Treat</title>
+	<link rel="stylesheet" href="css/main.css">
+<body>
+<h3>Logs:</h3><br>
+<div id="app">
+	<ul class="col-lg-6 col-lg-offset-3">
+		<li v-for="log in logs">
+			{{log.message}}
+		</li>
+	</ul>
+</div>
+<script src="/node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
+<script src="/node_modules/vue/dist/vue.min.js"></script>
+
+<script>
+	var Log = ( function(){
+		var instance;
+		var streamedLogs;
+
+		function create(){
+			function openSocket(uri){
+				var ws = new WebSocket(uri);
+				ws.onopen = function(){console.log('Connection to ' + uri + ' opened.')};
+				ws.onclose = function(){ console.log('Connection to ' + uri + ' closed.')};
+				ws.onmessage = appendLog;
+				ws.onerror = handleError;
+				window.onbeforeunload = function(){
+					ws.close();
+				};
+			}
+			function appendLog(event){
+				log = JSON.parse(event.data);
+				streamedLogs.push(log);
+			}
+			function handleError(err){
+				console.log(err);
+			}
+			function init(uri){
+				streamedLogs = [];
+				openSocket(uri);
+
+				new Vue({
+					el: '#app',
+					data: {
+						logs: streamedLogs
+					}
+				});
+
+			}
+			return {
+				init: init
+			};
+		}
+
+		return {
+			getInstance: function(){
+				if(!instance){
+					instance = create();
+				}
+				return instance;
+			}
+		};
+	})();
+
+	var log = Log.getInstance();
+	log.init('ws://localhost:8080/api/log');
+</script>
+</body>
+</html>
