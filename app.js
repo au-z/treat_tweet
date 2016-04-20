@@ -16,13 +16,14 @@ var twitter = new Twitter(appConfig.twitter);
 var candyio = require('./gpio/candyio.js');
 configureLogs();
 
-require('./routes')(app, twitter);
+require('./routes')(app, twitter, expressWs.getWss());
+
 var port = parseInt(process.env.PORT, 10) || 8080;
 app.listen(port);
 console.log('Server running at http://localhost:' + port + '/');
 
-// twitter.stream('user', {track: 'tweet_4_treat'}, function(stream) {
-twitter.stream('statuses/filter', {track: 'norway'}, function(stream) {
+// twitter.stream('user', {track: '@tweet_4_treat'}, function(stream) {
+twitter.stream('statuses/filter', {track: 'Kardashian'}, function(stream) {
 	console.log('Streaming twitter...');
 	stream.on('data', function(tweet) {
 		if(tweet.text){

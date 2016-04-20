@@ -8,15 +8,16 @@ body{
 	background-color: $cl;
 }
 
+[v-cloak] {display: none}
+
 #app{
 	ul{
 		li{
-			// border-style: inset;
-			border: 1px solid: #333;
 			padding: 8px;
-			color: white;
-			background-color: #333;
+			color: #444;
+			background-color: white;
 			list-style: none;
+			margin-bottom: 2px;
 		}
 	}
 }

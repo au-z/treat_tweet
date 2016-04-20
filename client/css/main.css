@@ -2,7 +2,8 @@ body {
   background-color: #F3F4F5; }
 
 #app ul li {
-  border-top: #333;
   padding: 8px;
-  background-color: #ca774e;
-  list-style: none; }
+  color: #444;
+  background-color: white;
+  list-style: none;
+  margin-bottom: 2px; }
