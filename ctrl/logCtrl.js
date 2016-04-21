@@ -1,29 +1,23 @@
 var winston = require('winston');
 
-module.exports = function logFactory(){
+module.exports = function logFactory(wss){
 	return({
 		log: log
 	});
 
 	//PUBLIC
-	function log(ws, res){
-		winston.stream({ start: -1 }).on('log', function(log) {
-	    ws.send(JSON.stringify(log), function(err){
-	    	winston.log('info', 'logCtrl: Socket conn to client lost.');
+	function log(ws, req){
 
-	    });
-	  });
+		winston.stream({ start: -1 }).on('log', function(log){
+			ws.send(JSON.stringify(log), function(err){
+				if(err) console.log(err);
+			});
+		});
+
+		ws.on('close', function(user) {
+			console.log('Disconnected: %s', ws.upgradeReq.url);
+		});
 	}
-
-	//log/heartbeat
-	function heartbeat(ws, res){
-		var counter = 0;
-		var iv = setInterval(function(){
-			ws.send(counter);
-			// console.log(counter);
-			counter++;
-		}, 500);
-	}
-
+	
 	//PRIVATE
 }

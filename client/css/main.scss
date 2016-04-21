@@ -3,20 +3,39 @@ $cml: #c7c0bc;
 $cm: #908575;
 $cd: #453e31;
 $ca: #ca774e;
-
 body{
 	background-color: $cl;
 }
 
+[v-cloak] {display: none}
+
 #app{
 	ul{
 		li{
-			// border-style: inset;
-			border: 1px solid: #333;
-			padding: 8px;
-			color: white;
-			background-color: #333;
+			color: #444;
+			background-color: white;
 			list-style: none;
+			margin: 0 0 2px 0;
+		}
+	}
+}
+
+.log{
+	.timestamp{
+
+	}
+	.message{
+
+	}
+	.duplicates{
+		& > div{
+			width: 1.5em; height: 1.5em;
+			border-radius: 1em;
+			text-align: center;
+			line-height: 1.5em;
+			font-weight: bold;
+			color: white;
+			background-color: tomato;
 		}
 	}
 }
