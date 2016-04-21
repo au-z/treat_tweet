@@ -8,9 +8,6 @@ body {
   color: #444;
   background-color: white;
   list-style: none;
-  margin: 0 0 2px 0; }
-
-.log .duplicates > div {
   width: 1.5em;
   height: 1.5em;
   border-radius: 1em;
